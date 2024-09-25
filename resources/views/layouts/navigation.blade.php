@@ -24,6 +24,10 @@ use App\Enums\User\UserType;
                     <x-nav-link :href="route('companies.index')" :active="request()->routeIs('companies.index')">
                         {{ __('Company') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('employees.index')" :active="request()->routeIs('employees.index')">
+                        {{ __('Employee') }}
+                    </x-nav-link>
                 @endif
                 </div>
             </div>

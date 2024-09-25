@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Company;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Enums\User\UserType;
+use App\Models\Employee;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,6 +24,9 @@ class DatabaseSeeder extends Seeder
             'role' => UserType::ADMIN->value
         ]);
 
-        Company::factory(6)->create();
+        Company::factory(10)->create();
+        
+        Employee::factory(10)->create();
+
     }
 }
