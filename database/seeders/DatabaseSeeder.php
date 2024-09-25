@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Enums\User\UserType;
 use App\Models\User;
+use App\Models\Company;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Enums\User\UserType;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,5 +22,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@admin.com',
             'role' => UserType::ADMIN->value
         ]);
+
+        Company::factory(6)->create();
     }
 }
