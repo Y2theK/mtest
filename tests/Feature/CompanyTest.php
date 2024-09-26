@@ -71,6 +71,26 @@ class CompanyTest extends TestCase
         Storage::disk('public')->assertExists($lastCompany->logo);
      
     }
+    public function test_admin_cannot_create_company_with_invalid_data()
+    {
+        $company = [
+            'name' => '',
+            'email' => 'wrong ompany.com',
+            'website' => 'https://google.com',
+            'logo' =>  UploadedFile::fake()->image('company.jpg'), 
+        ];
+
+        $response = $this->actingAs($this->admin)->post('/companies', $company);
+        
+        $response->assertInvalid();
+
+        $this->assertDatabaseMissing('companies', [
+            'name' => $company['name'],
+            'email' => $company['email'],
+            'website' => $company['website']
+        ]);
+
+    }
     public function test_user_cannot_create_company()
     {
         Storage::fake();
