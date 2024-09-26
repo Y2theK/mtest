@@ -16,11 +16,11 @@ use App\Enums\User\UserType;
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     
+                @if (auth()->user()->role === UserType::ADMIN->value)
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     
-                @if (auth()->user()->role === UserType::ADMIN->value)
                     <x-nav-link :href="route('companies.index')" :active="request()->routeIs('companies.index')">
                         {{ __('Company') }}
                     </x-nav-link>
